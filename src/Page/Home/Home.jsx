@@ -1,19 +1,31 @@
 import {useLoaderData } from "react-router-dom";
-import brand_1 from "/src/assets/636353ed9f9141667453933.png"
-import brand_2 from "/src/assets/636354923c0881667454098.png"
-import brand_3 from "/src/assets/636365ad743361667458477.png"
-import brand_4 from "/src/assets/6398129629bbc1670910614.png"
-import brand_5 from "/src/assets/639827850f9b11670915973.png"
-import brand_6 from "/src/assets/639829185247d1670916376.jpg"
-import brand_7 from "/src/assets/63982988279811670916488.png"
-import brand_8 from "/src/assets/639829bab54871670916538.png"
 import Products from "../ROwProduct/Products";
+import { useEffect, useState } from "react";
+import BrandsLayout from "./BrandsLayout";
 const Home = () => {
+  const [brands, setbrands] = useState([]);
   const product = useLoaderData();
   const topRateds = product.filter(i => i.ratting === "5");
-  const topRated = topRateds.slice(0,12);
+  const topRated = topRateds.slice(0,6);
+  useEffect(() => {
+     fetch('Brands.json')
+    .then(res => res.json())
+    .then (data => setbrands(data))
+  },[])
+  console.log(brands)
   return (
     <div>
+
+{/* Banner
+    <div className=" grid grid-cols-2 bg-gradient-to-br from-slate-300 min-h-screen to-[#f72d0061]">
+    <div></div>
+    <div><img src="https://i.ibb.co/Fm0Zzvw/png-transparent-headphones-mobile-phone-accessories-battery-charger-headset-iphone-headphones-electr.png" alt="" /></div>
+
+
+    </div> */}
+
+
+
       {/* Slider */}
       <div className="carousel w-full">
   <div id="slide1" className="carousel-item relative w-full">
@@ -54,57 +66,22 @@ const Home = () => {
 </div>
 
 {/*Section 2, Our Brands */}
-    <div className="mt-7 max-w-5xl px-3 m-auto">
-    <h2 className="text-4xl font-bold text-center">Our Brands</h2>
+    <div className="mt-14 max-w-5xl px-3 m-auto">
+    <h2 className="text-4xl font-bold text-black text-center">Our Trusted <span className="text-[#f72c00]">Brands</span></h2>
+    <p className="text-center">Explore tops accessories  on our platform</p>
     <div className="grid grid-cols-4 mt-5 gap-5">
-        <a href="/brands/OnePlus"><div className="rounded-md text-center"><div className="bg-[#f7fee7]">
-          <img className="m-auto py-7" src={brand_1}></img>
-        </div>
-        <p>OnePlus</p>
-        </div></a>
-        <a href="/brands/Asus"><div className="rounded-md text-center"><div className="bg-[#ecfdf5]">
-          <img className="m-auto py-7" src={brand_2}></img>
-        </div>
-        <p>ASUS</p>
-        </div></a>
-        <a href="/brands/HP"><div className="rounded-md text-center"><div className="bg-[#eff6ff]">
-          <img className="m-auto py-7" src={brand_3}></img>
-        </div>
-        <p>HP</p>
-        </div></a>
-        <a href="/brands/Xiaomi"><div className="rounded-md text-center"><div className="bg-[#ff660039]">
-          <img className="m-auto py-7" src={brand_4}></img>
-        </div>
-        <p>Xiaomi</p>
-        </div></a>
-        <a href="/brands/Realme"><div className="rounded-md text-center"><div className="bg-[#fef2f2]">
-          <img className="m-auto py-7" src={brand_5}></img>
-        </div>
-        <p>Realme</p>
-        </div></a>
-        <a href="/brands/Apple"><div className="rounded-md text-center"><div className="bg-[#ffffff]">
-          <img className="m-auto py-7" src={brand_6}></img>
-        </div>
-        <p>Apple</p>
-        </div></a>
-        <a href="/brands/JBL"><div className="rounded-md text-center"><div className="bg-[#ff6600]">
-          <img className="m-auto py-7" src={brand_7}></img>
-        </div>
-        <p>JBL</p>
-        </div></a>
-        <a href="/brands/Samsung"><div className="rounded-md text-center"><div className="bg-[#ffffff]">
-          <img className="m-auto py-7" src={brand_8}></img>
-        </div>
-        <p>Samsung</p>
-        </div></a>
+        {
+          brands.map((brand, i )=> <BrandsLayout key={i} brand={brand}></BrandsLayout>)
+        }
+    </div>
     </div>
 
-    </div>
+
 
 
 {/* 3rd section..... */}
-    <div className="max-w-7xl px-3 m-auto">
-    <h2 className="text-4xl font-bold text-center mt-10">Our Top Rated Product</h2>
+    <div className="max-w-7xl mt-14 px-3 m-auto">
+    <h2 className="text-4xl font-bold text-center text-black mt-10">Our <span className="text-[#f72c00]">Top Rated </span> Product</h2>
 
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
       {
@@ -112,6 +89,32 @@ const Home = () => {
       }
       </div>
     </div>
+
+
+{/* 4th sections "Wht choice us" */}
+
+
+<div className="max-w-7xl mt-14 px-3 m-auto">
+<h2 className="text-4xl font-bold text-center text-black mt-10">Why <span className="text-[#f72c00]">Choose </span> Us</h2>
+
+<div className="grid gap-5 grid-cols-2">
+{/* left side  */}
+<div>
+<h2 className="text-5xl font-bold text-black mt-5"><span className="text-[#f72c00]">We have <br /></span>Best deals for you</h2>
+<p className="text-base mt-3 font-semibold text-justify text-[#232323]">We are committed to providing electronic accessories that meet the highest standards of quality and reliability. Our products are sourced from trusted manufacturers, ensuring you get top-notch accessories that stand the test of time. Discover a vast selection of electronic accessories to enhance your tech experience. From chargers and cables to protective cases and stylish headphones, we have everything you need to complement your devices.</p>
+
+
+<a href="#"><button className=" rounded-none mt-3 btn text-white font-semibold text-base bg-[#f72c00] border-2 border-[#f72c00] hover:border-[#f72c00] hover:text-[#f72c00] ">Find Deals</button></a>
+</div>
+
+
+{/* Right side  */}
+<div></div>
+
+
+</div>
+</div>
+
 
     </div>
   );
