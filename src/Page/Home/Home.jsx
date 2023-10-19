@@ -57,42 +57,42 @@ const Home = () => {
     <div className="mt-7 max-w-5xl px-3 m-auto">
     <h2 className="text-4xl font-bold text-center">Our Brands</h2>
     <div className="grid grid-cols-4 mt-5 gap-5">
-        <a href="/brands/oneplus"><div className="rounded-md text-center"><div className="bg-[#f7fee7]">
+        <a href="/brands/OnePlus"><div className="rounded-md text-center"><div className="bg-[#f7fee7]">
           <img className="m-auto py-7" src={brand_1}></img>
         </div>
         <p>OnePlus</p>
         </div></a>
-        <a href="/brands/asus"><div className="rounded-md text-center"><div className="bg-[#ecfdf5]">
+        <a href="/brands/Asus"><div className="rounded-md text-center"><div className="bg-[#ecfdf5]">
           <img className="m-auto py-7" src={brand_2}></img>
         </div>
         <p>ASUS</p>
         </div></a>
-        <a href="/brands/hp"><div className="rounded-md text-center"><div className="bg-[#eff6ff]">
+        <a href="/brands/HP"><div className="rounded-md text-center"><div className="bg-[#eff6ff]">
           <img className="m-auto py-7" src={brand_3}></img>
         </div>
         <p>HP</p>
         </div></a>
-        <a href="/brands/xiaomi"><div className="rounded-md text-center"><div className="bg-[#ff660039]">
+        <a href="/brands/Xiaomi"><div className="rounded-md text-center"><div className="bg-[#ff660039]">
           <img className="m-auto py-7" src={brand_4}></img>
         </div>
         <p>Xiaomi</p>
         </div></a>
-        <a href="/brands/realme"><div className="rounded-md text-center"><div className="bg-[#fef2f2]">
+        <a href="/brands/Realme"><div className="rounded-md text-center"><div className="bg-[#fef2f2]">
           <img className="m-auto py-7" src={brand_5}></img>
         </div>
         <p>Realme</p>
         </div></a>
-        <a href="/brands/apple"><div className="rounded-md text-center"><div className="bg-[#ffffff]">
+        <a href="/brands/Apple"><div className="rounded-md text-center"><div className="bg-[#ffffff]">
           <img className="m-auto py-7" src={brand_6}></img>
         </div>
         <p>Apple</p>
         </div></a>
-        <a href="/brands/jbl"><div className="rounded-md text-center"><div className="bg-[#ff6600]">
+        <a href="/brands/JBL"><div className="rounded-md text-center"><div className="bg-[#ff6600]">
           <img className="m-auto py-7" src={brand_7}></img>
         </div>
         <p>JBL</p>
         </div></a>
-        <a href="/brands/samsung"><div className="rounded-md text-center"><div className="bg-[#ffffff]">
+        <a href="/brands/Samsung"><div className="rounded-md text-center"><div className="bg-[#ffffff]">
           <img className="m-auto py-7" src={brand_8}></img>
         </div>
         <p>Samsung</p>

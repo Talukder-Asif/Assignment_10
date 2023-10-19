@@ -1,11 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 const BrandProduct = () => {
-    const params = useParams().brandname;
-    console.log(params)
+    const data = useLoaderData()
     return (
         <div>
-        {params}
+        {data.length}
         </div>
     );
 };

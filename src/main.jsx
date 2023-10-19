@@ -36,7 +36,8 @@ const router = createBrowserRouter([
         element:<CreateAccount></CreateAccount>
       },
       {
-        path:"/brands/:brandname",
+        path:"/brands/:brand",
+        loader: ({params}) => fetch(`http://localhost:5000/brands/${params.brand}`),
         element:<BrandProduct></BrandProduct>
       },
       {
