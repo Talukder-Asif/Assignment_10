@@ -16,10 +16,12 @@ import BrandProduct from './Page/BrandProduct/BrandProduct';
 import ShopPage from './Page/ShopPage/ShopPage';
 import SingleProduct from './Page/SingleProduct/SingleProduct';
 import Cart from './Page/Cart/Cart';
+import ErrorPage from './Page/404/ErrorPage';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:'/',

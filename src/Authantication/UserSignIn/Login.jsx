@@ -1,4 +1,48 @@
+/* eslint-disable no-unused-vars */
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
+
 const Login = () => {
+  const {login, googleSignup} = useContext(AuthContext);
+  const HandelLogin = (e) =>{
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    login(email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+  }
+
+
+  const handelGoogle = () =>{
+    googleSignup()
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+  }
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -11,13 +55,14 @@ const Login = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form className="card-body">
+          <form onSubmit={HandelLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -29,12 +74,13 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link font-bold  link-hover">
+                <a onClick={googleSignup} href="#" className="label-text-alt link font-bold  link-hover">
                   Log in with Google
                 </a>
                 <a href="/signup" className="label-text-alt link link-hover">
@@ -43,7 +89,7 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="text-white w-full bg-[#f72c00] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login</button>
+              <button className="text-white w-full bg-[#f72c00] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Login</button>
             </div>
           </form>
         </div>

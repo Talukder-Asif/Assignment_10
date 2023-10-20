@@ -4,7 +4,7 @@ import { AuthContext } from "../../Authantication/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 /* eslint-disable react/prop-types */
 const Products = ({product}) => {
-  const user = useContext(AuthContext)
+  const {user} = useContext(AuthContext)
   const handelCartBtn = (data) =>{
     const name = data.name;
     const price = data.price;

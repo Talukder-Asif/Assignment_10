@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const CreateAccount = () => {
-    const {createUser} = useContext(AuthContext)
+    const {createUser, googleSignup, update} = useContext(AuthContext)
     const handelCreate = (e) =>{
         e.preventDefault();
         const form = e.target;
@@ -12,12 +14,28 @@ const CreateAccount = () => {
         const password = form.password.value;
         createUser(email, password)
         .then((result) => {
-            console.log(result.user);
+          update(name, photo)
           })
           .catch((error) => {
             console.log(error)
           })
 
+    }
+    const handelGoogle = () =>{
+      googleSignup()
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
     }
   return (
     <div>
@@ -81,7 +99,7 @@ const CreateAccount = () => {
                   required
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover font-bold ">
+                  <a onClick={handelGoogle} className="label-text-alt link link-hover font-bold ">
                     Create with Google
                   </a>
                   <a href="/signin" className="label-text-alt link link-hover">
