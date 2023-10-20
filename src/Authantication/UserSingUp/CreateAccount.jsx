@@ -90,7 +90,7 @@ const CreateAccount = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Signp</button>
+                <button className="text-white w-full bg-[#f72c00] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center">Signp</button>
               </div>
             </form>
           </div>

@@ -33,7 +33,7 @@ const UpdateProduct = () => {
         ):null)
     }
   return (
-    <div>
+    <div className="my-10">
       <h2 className="text-center text-4xl font-bold">Update Page</h2>
       <img className="w-36 m-auto mt-5" src={item.photo} alt="" />
       <div className="w-3/4 m-auto mt-20">

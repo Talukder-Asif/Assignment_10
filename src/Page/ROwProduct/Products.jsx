@@ -1,7 +1,39 @@
+import { useContext } from "react";
 import Ratting from "./Ratting";
-
+import { AuthContext } from "../../Authantication/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 /* eslint-disable react/prop-types */
 const Products = ({product}) => {
+  const user = useContext(AuthContext)
+  const handelCartBtn = (data) =>{
+    const name = data.name;
+    const price = data.price;
+    const image = data.photo;
+    const brand = data.brand;
+    const addCart = {name, price, image, brand}
+    fetch("http://localhost:5000/cart",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addCart),
+    })
+    .then((req) => req.json())
+      .then((data) =>
+        data?.insertedId
+          ? (Swal.fire({
+              title: "Success!",
+              text: "Product is added to cart successfully",
+              icon: "success",
+              confirmButtonText: "Yeah",
+            })
+          )
+          : null
+      );
+  }
+
+
+
     return (
         <div className="card bg-base-100 shadow-xl">
   <div className="relative">
@@ -19,11 +51,13 @@ const Products = ({product}) => {
     <p className="font-semibold text-center">category:<br/> <span className="text-[#f72c00]">{product?.category} </span></p> 
     </div>
       
-    <div className="card-actions justify-evenly">
+    {
+      user?<div className="card-actions justify-evenly">
     <a href={`/updateproduct/${product._id}`}><button className="btn btn-warning bg-[#f72c00] font-semibold border-none hover:border-none text-white hover:text-[#f72c00]">Update</button></a>
     <a href={`/shop/${product._id}`}><button className="btn btn-warning bg-[#f72c00] font-semibold border-none hover:border-none text-white hover:text-[#f72c00]">Details</button></a>
-    <a href={`/updateproduct/${product._id}`}><button className="btn btn-warning bg-[#f72c00] font-semibold border-none hover:border-none text-white hover:text-[#f72c00]">Add Cart</button></a>
-    </div>
+    <button onClick={() => handelCartBtn(product)} className="btn btn-warning bg-[#f72c00] font-semibold border-none hover:border-none text-white hover:text-[#f72c00]">Add Cart</button>
+    </div>:null
+    }
   </div>
 </div>
     );
