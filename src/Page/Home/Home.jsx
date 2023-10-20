@@ -23,7 +23,7 @@ const Home = () => {
 {/* style={{backgroundImage: 'url(https://i.ibb.co/KrPhRLb/387827788-710400371119326-8201050937880299661-n.png)'}}  */}
 <div className="hero min-h-screen bg-[#fafafa] ">
   <div className="hero-content flex-col lg:flex-row-reverse">
-    <img src="https://i.ibb.co/jJBf50q/Apple-i-Phone-14-Pro-i-Phone-14-Pro-Max-space-black-220907-inline-jpg-small-removebg-preview.png" className="max-w-sm " />
+    <img src="https://i.ibb.co/jJBf50q/Apple-i-Phone-14-Pro-i-Phone-14-Pro-Max-space-black-220907-inline-jpg-small-removebg-preview.png" className=" " />
     <div>
       <h1 className="text-5xl font-bold">The best Online <br /> shop in your Country</h1>
       <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>

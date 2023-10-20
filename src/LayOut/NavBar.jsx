@@ -1,14 +1,25 @@
 /* eslint-disable no-unused-vars */
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import image_1 from '/src/assets/logo-black.png'
 import "./NavBar.css"
 import { useContext } from "react";
 import { AuthContext } from "../Authantication/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 const NavBar = () => {
+
+
+  const navigate = useNavigate();
   const {user , logOut} = useContext(AuthContext);
   const HandelLogOut = () =>{
     logOut()
     .then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Sign up successfully',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      navigate('/signin')
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.
@@ -55,7 +66,7 @@ const NavBar = () => {
         <>
         <li className="text-center text-xl font-bold">{user?.displayName? user.displayName : user.email}</li>
         <li className="ml-4 text-xl font-semibold"><NavLink to={'/cart'}>My Cart</NavLink></li>
-        <li onClick={HandelLogOut} className="ml-4 text-xl font-semibold"><Link to={"/signin"}>Logout</Link></li>
+        <li onClick={HandelLogOut} className="ml-4 text-xl font-semibold"><Link>Logout</Link></li>
         </>
         :
         <>

@@ -45,7 +45,20 @@ const BrandProduct = () => {
   </div>
 </div>
     {/* Brand Product */}
-    <div className="max-w-7xl px-3 m-auto">
+    {
+      data?.length === 0 ? <>
+      <div className="hero min-h-screen bg-base-200">
+  <div className="hero-content text-center">
+    <div className="max-w-md">
+      <h1 className="text-5xl text-[#f72c00] font-bold">Sorry</h1>
+      <p className="py-6">No product available of this brand, We will update it soon. Thank you</p>
+      <a href="/addproduct"><button className="text-white bg-[#f72c00] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add Product</button></a>
+    </div>
+  </div>
+</div>
+      </>:
+      <>
+      <div className="max-w-7xl px-3 m-auto">
     <h2 className="text-4xl font-bold text-center mt-10">{params} brand Products</h2>
 
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
@@ -54,10 +67,10 @@ const BrandProduct = () => {
       }
       </div>
     </div>
+      </>
+    }
 
-        {data.length}
         </div>
     );
 };
-// Test
 export default BrandProduct;

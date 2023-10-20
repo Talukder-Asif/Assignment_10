@@ -2,9 +2,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const {login, googleSignup} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   const HandelLogin = (e) =>{
     e.preventDefault();
     const email = e.target.email.value;
@@ -13,11 +18,24 @@ const Login = () => {
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
+      Swal.fire({
+        icon: 'success',
+        title: 'Log in successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      navigate(location?.state ? location.state : '/')
       // ...
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      Swal.fire({
+        icon: 'error',
+        title: errorMessage,
+        showConfirmButton: false,
+        timer: 3000
+      })
     });
   }
 
@@ -32,6 +50,13 @@ const Login = () => {
       const user = result.user;
       // IdP data available using getAdditionalUserInfo(result)
       // ...
+      Swal.fire({
+        icon: 'success',
+        title: 'Log in successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      navigate(location?.state ? location.state : '/')
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -80,7 +105,7 @@ const Login = () => {
                 required
               />
               <label className="label">
-                <a onClick={googleSignup} href="#" className="label-text-alt link font-bold  link-hover">
+                <a onClick={handelGoogle} className="label-text-alt link font-bold  link-hover">
                   Log in with Google
                 </a>
                 <a href="/signup" className="label-text-alt link link-hover">
