@@ -3,7 +3,7 @@ import Ratting from "./Ratting";
 import { AuthContext } from "../../Authantication/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 /* eslint-disable react/prop-types */
-const Products = ({product}) => {
+const Products = ({product, mode}) => {
   const {user} = useContext(AuthContext)
   const handelCartBtn = (data) =>{
     const name = data.name;
@@ -35,10 +35,10 @@ const Products = ({product}) => {
 
 
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className={!mode? "card bg-base-100 shadow-xl" : "card bg-[#646464] shadow-xl text-white"}>
   <div className="relative">
   <figure><img src={product.photo} alt={product.name} /></figure>
-  <div className="absolute bottom-0 left-5">{
+  <div className="absolute bottom-2 bg-black bg-opacity-50 rounded-full left-2">{
         <Ratting Ratting={product.ratting}></Ratting>
       }</div>
   </div>

@@ -2,7 +2,6 @@ import { useLoaderData, useParams } from "react-router-dom";
 import Products from "../ROwProduct/Products";
 const BrandProduct = () => {
     const params = useParams().brand;
-    console.log(params)
     const data = useLoaderData()
     return (
         <div>

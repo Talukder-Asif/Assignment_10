@@ -17,12 +17,11 @@ const HandelDelete = (id) => {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-            console.log(id)
             fetch(`http://localhost:5000/cart/${id}`, {
                 method: 'DELETE',
             })
             .then((res) => res.json())
-            .then (dataa => {console.log(dataa);
+            .then (dataa => {
                 if (dataa.deletedCount > 0){
                     Swal.fire(
                         'Deleted!',

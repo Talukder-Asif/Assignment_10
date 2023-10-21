@@ -14,15 +14,6 @@ const AuthProvider = ({children}) => {
 
 
     const [user, setUser] = useState(null);
-    const [loading, setloading] = useState(true);
-    useEffect(() =>{
-        onAuthStateChanged(auth, (User) => {
-            if (User) {
-              setUser(User)
-              setloading(false)
-            }
-          });
-    },[])
     const createUser = (email, password) => {
         setloading(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -43,7 +34,16 @@ const AuthProvider = ({children}) => {
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
           })
-    }
+        }
+        const [loading, setloading] = useState(true);
+        useEffect(() =>{
+            onAuthStateChanged(auth, (User) => {
+                setloading(false)
+                if (User) {
+                  setUser(User)
+                }
+              });
+        },[])
 
     const userInfo = {
         user,
