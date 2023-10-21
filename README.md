@@ -1,8 +1,8 @@
-# React + Vite
+- This is a dynamic website and host on the MongoBD server
+- You can create account by email and password or jyst with a google account.
+- If you log in, the nav bar will show your name, and your cart and you cal select product on your cart.
+- You can add or update product if you log in.
+- You can shift dark mode or light mode in homepage by clicking the dark mode button.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The URL of my website is: https://brandshop-d642b.web.app

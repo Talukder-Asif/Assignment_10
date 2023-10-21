@@ -14,7 +14,7 @@ const AddProduct = () => {
     const all = { name, brand, price, category, ratting, details, photo };
 
     // send data to Backend
-    fetch("http://localhost:5000/product", {
+    fetch("https://brand-shop-server-359a9t7j6-asif-talukders-projects.vercel.app/product", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

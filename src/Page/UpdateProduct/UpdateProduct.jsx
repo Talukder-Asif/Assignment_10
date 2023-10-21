@@ -15,7 +15,7 @@ const UpdateProduct = () => {
     const photo = form.photo.value;
         const updatedproduct = {name, brand, price, category, ratting, details, photo}
         // send data to Backend 
-        fetch(`http://localhost:5000/product/${item._id}`,{
+        fetch(`https://brand-shop-server-359a9t7j6-asif-talukders-projects.vercel.app/product/${item._id}`,{
             method:'PUT',
             headers:{
                 'Content-Type':'application/json'

@@ -26,17 +26,17 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/',
-        loader:()=>fetch('http://localhost:5000/product'),
+        loader:()=>fetch('https://brand-shop-server-359a9t7j6-asif-talukders-projects.vercel.app/product'),
         element: <Home></Home>
       },
       {
         path:'/shop',
-        loader:()=>fetch('http://localhost:5000/product'),
+        loader:()=>fetch('https://brand-shop-server-359a9t7j6-asif-talukders-projects.vercel.app/product'),
         element: <ShopPage></ShopPage>
       },
       {
         path:'/shop/:id',
-        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
+        loader:({params})=>fetch(`https://brand-shop-server-359a9t7j6-asif-talukders-projects.vercel.app/product/${params.id}`),
         element: <PrivateRoute>
           <SingleProduct></SingleProduct>
         </PrivateRoute>
@@ -57,17 +57,17 @@ const router = createBrowserRouter([
       },
       {
         path:"/brands/:brand",
-        loader: ({params}) => fetch(`http://localhost:5000/brands/${params.brand}`),
+        loader: ({params}) => fetch(`https://brand-shop-server-359a9t7j6-asif-talukders-projects.vercel.app/brands/${params.brand}`),
         element:<BrandProduct></BrandProduct>
       },
       {
         path:'/updateproduct/:id',
-        loader:({params}) => fetch(`http://localhost:5000/product/${params.id}`),
+        loader:({params}) => fetch(`https://brand-shop-server-359a9t7j6-asif-talukders-projects.vercel.app/product/${params.id}`),
         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>
       },
       {
         path:"/cart",
-        loader:() => fetch(`http://localhost:5000/cart`),
+        loader:() => fetch(`https://brand-shop-server-359a9t7j6-asif-talukders-projects.vercel.app/cart`),
         element: <PrivateRoute><Cart></Cart></PrivateRoute>
       }
     ]

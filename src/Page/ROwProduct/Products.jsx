@@ -11,7 +11,7 @@ const Products = ({product, mode}) => {
     const image = data.photo;
     const brand = data.brand;
     const addCart = {name, price, image, brand}
-    fetch("http://localhost:5000/cart",{
+    fetch("https://brand-shop-server-359a9t7j6-asif-talukders-projects.vercel.app/cart",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
